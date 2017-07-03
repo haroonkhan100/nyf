@@ -1,0 +1,40 @@
+
+        <div class="container">
+
+     <div class="form-camelot-admin">
+
+      <h2 class="form-signin-heading">Countries (<a href="/admin/console#/country/create">New</a>)</h2>
+    <table  st-table="tableDisplayed" st-safe-src="theListLoaded" class="table table-striped">
+      <thead>
+      <tr>
+        <th colspan="6">
+          <input st-search placeholder="Search/Filter" class="input-sm form-control" type="search"/>
+        </th>
+      </tr>
+      <tr>
+        <th st-sort="name">Name</th>
+        <th st-sort="code">Code</th>
+        <th st-sort="currency">Currency</th>
+        <th st-sort="active">Active</th>
+        <th st-sort="updatedAt">LastUpdated</th>
+        <!--<th></th>-->
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="row in tableDisplayed">
+        <td>{{row.name}}</td>
+        <td>{{row.code}}</td>
+        <td>{{row.currency}}</td>
+        <td>{{row.active}}</td>
+        <td>{{row.updatedAt | date }}</td>
+        <!--<td><a href="/admin/country/{{row.id}}">View</a></td>-->
+        <td><a href="/admin/console#/country/edit/{{row.id}}">Edit</a></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+        </div>
+

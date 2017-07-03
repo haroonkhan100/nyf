@@ -1,0 +1,43 @@
+
+
+        <div class="container">
+
+
+     <div class="form-camelot-admin">
+
+      <h2 class="form-signin-heading">Pieces (<a href="/admin/console#/piece/create">New</a>)</h2>
+    <table  st-table="tableDisplayed" st-safe-src="theListLoaded" class="table table-striped">
+      <thead>
+      <tr>
+        <th colspan="6">
+          <input st-search placeholder="Search/Filter" class="input-sm form-control" type="search"/>
+        </th>
+      </tr>
+      <tr>
+        <th st-sort="title">Title</th>
+        <th st-sort="mediaType">Media Type</th>
+        <th st-sort="url">Url</th>
+        <th st-sort="updatedAt">LastUpdated</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="row in tableDisplayed">
+        <td>{{row.title}}</td>
+        <td>{{row.mediaType}}</td>
+        <td>{{row.url}}</td>
+        <td>{{row.updatedAt | date }}</td>
+        <td><a href="/admin/console#/piece/view/{{row.id}}">View</a></td>
+        <td><a href="/admin/console#/piece/edit/{{row.id}}">Edit</a></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+
+        </div>
+
+	

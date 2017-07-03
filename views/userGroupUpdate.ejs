@@ -1,0 +1,159 @@
+
+        <div class="container">
+
+
+
+    <form ng-submit="submitUserGroupDetailsUpdateForm()" id="usergroup-form" class="form-camelot-admin" name="userGroupDetails">
+      <h2 class="form-signin-heading">Update UserGroup (<a href="/admin/console#/usergroup">all</a>)</h2>
+      <div class="row">
+      <input type="hidden" ng-model="userGroupDetailsForm.id">
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.titleInternal.$invalid && userGroupDetails.titleInternal.$dirty}">
+          <label>Title (Internal)</label>
+          <input type="text" class="form-control" name="titleInternal" ng-model="userGroupDetailsForm.titleInternal" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.titleInternal.$dirty">
+            <span ng-show="userGroupDetails.titleInternal.$error.required">TitleInternal is required.</span>
+            <span ng-show="userGroupDetails.titleInternal.$error.maxlength">TitleInternal cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.titleExternal.$invalid && userGroupDetails.titleExternal.$dirty}">
+          <label>Title (External)</label>
+          <input type="text" class="form-control" name="titleExternal" ng-model="userGroupDetailsForm.titleExternal" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.titleExternal.$dirty">
+            <span ng-show="userGroupDetails.titleExternal.$error.required">TitleExternal is required.</span>
+            <span ng-show="userGroupDetails.titleExternal.$error.maxlength">TitleExternal cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.address1.$invalid && userGroupDetails.address1.$dirty}">
+          <label>Address1</label>
+          <input type="text" class="form-control" name="address1" ng-model="userGroupDetailsForm.address1" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.address1.$dirty">
+            <span ng-show="userGroupDetails.address1.$error.required">Address1 is required.</span>
+            <span ng-show="userGroupDetails.address1.$error.maxlength">Address1 cannot be more than 150 characters.</span>
+          </span>
+        </div>
+       <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.address2.$invalid && userGroupDetails.address2.$dirty}">
+          <label>Address2</label>
+          <input type="text" class="form-control" name="address2" ng-model="userGroupDetailsForm.address2" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.address2.$dirty">
+            <span ng-show="userGroupDetails.address2.$error.required">Address2 is required.</span>
+            <span ng-show="userGroupDetails.address2.$error.maxlength">Address2 cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.address3.$invalid && userGroupDetails.address3.$dirty}">
+          <label>Address3</label>
+          <input type="text" class="form-control" name="address3" ng-model="userGroupDetailsForm.address3" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.address3.$dirty">
+            <span ng-show="userGroupDetails.address3.$error.required">Address3 is required.</span>
+            <span ng-show="userGroupDetails.address3.$error.maxlength">Address3 cannot be more than 150 characters.</span>
+          </span>
+        </div>
+       <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.address4.$invalid && userGroupDetails.address4.$dirty}">
+          <label>Address4</label>
+          <input type="text" class="form-control" name="address4" ng-model="userGroupDetailsForm.address4" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.address4.$dirty">
+            <span ng-show="userGroupDetails.address4.$error.required">Address4 is required.</span>
+            <span ng-show="userGroupDetails.address4.$error.maxlength">Address4 cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.city.$invalid && userGroupDetails.city.$dirty}">
+          <label>City</label>
+          <input type="text" class="form-control" name="city" ng-model="userGroupDetailsForm.city" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.city.$dirty">
+            <span ng-show="userGroupDetails.city.$error.required">City is required.</span>
+            <span ng-show="userGroupDetails.city.$error.maxlength">City cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.state.$invalid && userGroupDetails.state.$dirty}">
+          <label>State</label>
+          <input type="text" class="form-control" name="state" ng-model="userGroupDetailsForm.state" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.state.$dirty">
+            <span ng-show="userGroupDetails.state.$error.required">State is required.</span>
+            <span ng-show="userGroupDetails.state.$error.maxlength">State cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.zip.$invalid && userGroupDetails.zip.$dirty}">
+          <label>Zip</label>
+          <input type="text" class="form-control" name="zip" ng-model="userGroupDetailsForm.zip" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.zip.$dirty">
+            <span ng-show="userGroupDetails.zip.$error.required">Zip is required.</span>
+            <span ng-show="userGroupDetails.zip.$error.maxlength">Zip cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.country.$invalid && userGroupDetails.country.$dirty}">
+          <label>Country</label>
+          <select ng-model="userGroupDetailsForm.country" ng-options="countryItem.name for countryItem in userGroupDetailsForm.CountryList">
+           
+          </select>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.phoneCountryCode.$invalid && userGroupDetails.phoneCountryCode.$dirty}">
+          <label>Phone Country Code</label>
+          <input type="text" class="form-control" name="phoneCountryCode" ng-model="userGroupDetailsForm.phoneCountryCode" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.phoneCountryCode.$dirty">
+            <span ng-show="userGroupDetails.phoneCountryCode.$error.required">PhoneCountryCode is required.</span>
+            <span ng-show="userGroupDetails.phoneCountryCode.$error.maxlength">PhoneCountryCode cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.phoneNumber.$invalid && userGroupDetails.phoneNumber.$dirty}">
+          <label>Phone Number</label>
+          <input type="text" class="form-control" name="phoneNumber" ng-model="userGroupDetailsForm.phoneNumber" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.phoneNumber.$dirty">
+            <span ng-show="userGroupDetails.phoneNumber.$error.required">PhoneNumber is required.</span>
+            <span ng-show="userGroupDetails.phoneNumber.$error.maxlength">PhoneNumber cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.faxNumber.$invalid && userGroupDetails.faxNumber.$dirty}">
+          <label>Fax Number</label>
+          <input type="text" class="form-control" name="faxNumber" ng-model="userGroupDetailsForm.faxNumber" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.faxNumber.$dirty">
+            <span ng-show="userGroupDetails.faxNumber.$error.required">FaxNumber is required.</span>
+            <span ng-show="userGroupDetails.faxNumber.$error.maxlength">FaxNumber cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.url.$invalid && userGroupDetails.url.$dirty}">
+          <label>Url</label>
+          <input type="text" class="form-control" name="url" ng-model="userGroupDetailsForm.url" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.url.$dirty">
+            <span ng-show="userGroupDetails.url.$error.required">Url is required.</span>
+            <span ng-show="userGroupDetails.url.$error.maxlength">Url cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.designation.$invalid && userGroupDetails.designation.$dirty}">
+          <label>Designation</label>
+          <input type="text" class="form-control" name="designation" ng-model="userGroupDetailsForm.designation" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="userGroupDetails.designation.$dirty">
+            <span ng-show="userGroupDetails.designation.$error.required">Designation is required.</span>
+            <span ng-show="userGroupDetails.designation.$error.maxlength">Designation cannot be more than 150 characters.</span>
+          </span>
+        </div>
+
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':userGroupDetails.active.$invalid && userGroupDetails.active.$dirty}">
+          <label>Active?</label>
+          <input type="checkbox" name="active" ng-model="userGroupDetailsForm.active" >
+        </div>
+
+
+       
+      </div>
+
+      <br/>
+
+      <!-- Disable signup button until the form has no errors -->
+      <button class="btn btn-primary btn-lg btn-block col-md-12" type="submit" ng-disabled="userGroupDetails.$invalid">
+        <span ng-show="!userGroupDetailsForm.loading">Update UserGroup</span>
+        <span class="overlord-loading-spinner fa fa-spinner" ng-show="userGroupDetailsForm.loading" ></span>
+        <span ng-show="userGroupDetailsForm.loading">Updating UserGroup...</span>
+      </button>
+      <button class="btn btn-danger btn-lg btn-block col-md-12" type="button" ng-click="deleteUserGroup()" ng-disabled="userGroupDetails.$invalid" >
+        <span ng-show="!userGroupDetailsForm.deleting">Delete UserGroup</span>
+        <span class="overlord-loading-spinner fa fa-spinner" ng-show="userGroupDetailsForm.deleting" ></span>
+        <span ng-show="userGroupDetailsForm.deleting">Deleting UserGroup...</span>
+      </button>
+
+      <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    </form>
+
+
+
+
+        </div>
+

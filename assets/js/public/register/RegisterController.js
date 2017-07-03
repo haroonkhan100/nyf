@@ -1,0 +1,1 @@
+angular.module('RegisterModule').controller('RegisterController', function(){});

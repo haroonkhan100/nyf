@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Registration Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!--STYLES-->
+		<link rel="stylesheet" href="/styles/angular-toastr.css">
+		<link rel="stylesheet" href="/styles/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="/styles/bootstrap.3.1.1.css">
+		<link rel="stylesheet" href="/styles/fullcalendar.css">
+		<link rel="stylesheet" href="/styles/importer.css">
+		<link rel="stylesheet" href="/styles/jquery-ui.css">
+		<link rel="stylesheet" href="/styles/jquery.cleditor.css">
+		<link rel="stylesheet" href="/styles/jquery.dataTables.css">
+		<link rel="stylesheet" href="/styles/jquery.onoff.css">
+		<link rel="stylesheet" href="/styles/prettyPhoto.css">
+		<link rel="stylesheet" href="/styles/rateit.css">
+		<link rel="stylesheet" href="/styles/style.css">
+		<link rel="stylesheet" href="/styles/widgets.css">
+		<!--STYLES END-->
+		<!--Added this so the client has access to the csrf tag and it's grabbed first service side on every page -->
+        <script type="text/javascript">
+        window.SAILS_LOCALS = { _csrf: "<%= _csrf %>" };
+        </script>
+	</head>
+
+	<body ng-app="RegisterModule" ng-controller="RegisterController" ng-cloak>
+		<div class="container-fluid">
+
+	      <!-- Creates the navbar -->
+	        <nav class="navbar navbar-default navbar-inverse">
+	      
+	          <!-- This creates the mechanism for the collapse button -->
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+	      
+	            <!-- This controls the number of lines in the image when the nav collapse -->
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+
+	          <!-- This is the brand on the left-hand side. -->
+	          <a class="navbar-brand" href="/#"> Dredd </a>
+	          <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+
+	          <!-- LOGIN FORM -->  
+	          <form ng-submit="submitLoginForm()" class="navbar-form navbar-right">
+
+	              <!-- E M A I L -->
+	              <div class="form-group">
+	                  <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
+	              </div>
+
+	              <!-- P A S S W O R D -->
+	              <div class="form-group">
+	                  <input ng-model="loginForm.password" type="password" placeholder="Password" name="password" class="form-control">
+	              </div>
+
+	              <!-- S U B M I T -->
+	              <button type="submit" class="btn btn-success">
+	                <span ng-show="!loginForm.loading">Sign in</span>
+	                <span ng-show="loginForm.loading" class="fa fa-spinner"></span>
+	                <span ng-show="loginForm.loading">Signing up...</span>
+	              </button>
+	              <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+	          </form>
+	        </nav>
+	    </div>
+		
+		<form ng-submit="submitSignupForm()" id="sign-up-form" class="form-signin" name="signup">
+      <h2 class="form-signin-heading">Register for an Account</h2>
+      <div class="row">
+        <div class="control-group form-group col-md-6" ng-class="{'has-error':signup.fname.$invalid && signup.fname.$dirty}">
+          <label>First name</label>
+          <input type="text" class="form-control" placeholder="e.g. Barak" name="fname" ng-model="signupForm.fname" ng-maxlength="50" >
+          <span class="help-block has-error" ng-if="signup.fname.$dirty">
+            <span ng-show="signup.fname.$error.required">First name is required.</span>
+            <span ng-show="signup.fname.$error.maxlength">First name cannot be more than 50 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-6" ng-class="{'has-error':signup.lname.$invalid && signup.lname.$dirty}">
+          <label>Last name</label>
+          <input type="text" class="form-control" placeholder="e.g. Obama" name="lname" ng-model="signupForm.lname" ng-maxlength="50" >
+          <span class="help-block has-error" ng-if="signup.lname.$dirty">
+            <span ng-show="signup.lname.$error.required">Last name is required.</span>
+            <span ng-show="signup.lname.$error.maxlength">Last name cannot be more than 50 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-6" ng-class="{'has-error':signup.password.$invalid && signup.password.$dirty}">
+          <label>Enter a password</label>
+          <!-- Added the compareTo directive that compares the passowrds -->
+          <input type="password" class="form-control" placeholder="at least 6 characters" name="password" ng-model="signupForm.password" id="password" required ng-minlength="6" compare-to="signupForm.confirmPassword" >
+          <span class="help-block has-error" ng-if="signup.password.$dirty">
+            <span ng-show="signup.password.$error.required">Password is required.</span>
+            <span ng-show="signup.password.$error.minlength">Password must be at least 6 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-6">
+          <label>Re-enter the password</label>
+          <input type="password" class="form-control" placeholder="one more time" name="confirmation" ng-model="signupForm.confirmPassword" required>
+          <span class="help-block has-error" ng-if="signup.confirmation.$dirty">
+            <span ng-show="signup.password.$error.compareTo">Password must match.</span>
+            <span ng-show="signup.confirmation.$error.required">Confirmation password is required.</span>
+          </span>
+        </div>
+
+        <!-- U S E R T Y P E -->
+
+        <div class="control-group form-group col-md-12"
+        ng-class="{'has-error':signup.usertype.$invalid &&
+                              signup.usertype.$dirty}">
+          <label>Username (12 characters or less)</label>
+          <select ng-model="signupForm.usertype" name="usertype" ng-options="x for x in userTypes" required>
+          </select>
+          <!--<input type="text" class="form-control" placeholder="nikola22" name="usertype" ng-model="signupForm.usertype" ng-maxlength="12" required >
+          <span class="help-block has-error" ng-if="signup.usertype.$dirty">
+            <span ng-show="signup.usertype.$error.required">usertype is required.</span>
+            <span ng-show="signup.usertype.$error.maxlength">12 characters max.</span>
+          </span>-->
+        </div>
+
+        <!-- S Y S T E M C O N T A C T I D -->
+
+        <div class="control-group form-group col-md-12"
+        ng-class="{'has-error':signup.username.$invalid &&
+                              signup.username.$dirty}">
+          <label>Legacy System Contact ID</label>
+          <input type="text" class="form-control" placeholder="1234" name="contactid" ng-model="signupForm.systemContactId" ng-maxlength="30" required >
+          <span class="help-block has-error" ng-if="signup.contactid.$dirty">
+            <span ng-show="signup.contactid.$error.required">Legacy ID is required.</span>
+            <span ng-show="signup.contactid.$error.maxlength">30 characters max.</span>
+          </span>
+        </div>
+
+        <!-- O R I G I N S Y S T E M -->
+
+        <div class="control-group form-group col-md-12"
+        ng-class="{'has-error':signup.username.$invalid &&
+                              signup.username.$dirty}">
+          <label>Username (12 characters or less)</label>
+          <select ng-model="signupForm.originSystem" name="originsystem" required>
+            <option ng-repeat="x in originSystems" value="{{x}}">{{x}}</option>
+          </select>
+          <!--<input type="text" class="form-control" placeholder="nikola22" name="username" ng-model="signupForm.username" ng-maxlength="12" required >
+          <span class="help-block has-error" ng-if="signup.username.$dirty">
+            <span ng-show="signup.username.$error.required">Username is required.</span>
+            <span ng-show="signup.username.$error.maxlength">12 characters max.</span>
+          </span>-->
+        </div>
+      </div>
+
+      <br/>
+
+      <!-- Disable signup button until the form has no errors -->
+      <button class="btn btn-primary btn-lg btn-block" type="submit" ng-disabled="signup.$invalid">
+        <span ng-show="!signupForm.loading">Create Account</span>
+        <span class="overlord-loading-spinner fa fa-spinner" ng-show="signupForm.loading" ></span>
+        <span ng-show="signupForm.loading">Preparing your new account...</span>
+      </button>
+
+      <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    </form>
+		<!--SCRIPTS-->
+		<script src="/js/dependencies/sails.io.js"></script>
+		<script src="/js/dependencies/angular.1.3.js"></script>
+		<script src="/js/dependencies/angular-resource.min.js"></script>
+		<script src="/js/public/admin/system/jquery.js"></script>
+		<script src="/js/public/admin/system/jquery-ui.min.js"></script>
+		<script src="/js/public/admin/system/jquery.cleditor.min.js"></script>
+		<script src="/js/public/admin/system/jquery.prettyPhoto.js"></script>
+		<script src="/js/public/admin/system/jquery.slimscroll.min.js"></script>
+		<script src="/js/public/admin/system/sparklines.js"></script>
+		<script src="/js/public/admin/system/moment.min.js"></script>
+		<script src="/js/dependencies/smart-table.min.js"></script>
+		<script src="/js/public/register/RegisterModule.js"></script>
+		<script src="/js/public/admin/ConsoleModule.js"></script>
+		<script src="/js/dependencies/angular-route.js"></script>
+		<script src="/js/dependencies/angular-toastr.js"></script>
+		<script src="/js/dependencies/compareTo.module.js"></script>
+		<script src="/js/public/admin/system/custom.js"></script>
+		<script src="/js/public/admin/ConsoleController.js"></script>
+		<script src="/js/public/admin/CountryController.js"></script>
+		<script src="/js/public/admin/PieceController.js"></script>
+		<script src="/js/public/admin/system/bootstrap-datetimepicker.min.js"></script>
+		<script src="/js/public/admin/system/bootstrap.min.js"></script>
+		<script src="/js/public/admin/system/charts.js"></script>
+		<script src="/js/public/admin/system/excanvas.min.js"></script>
+		<script src="/js/public/admin/system/filter.js"></script>
+		<script src="/js/public/admin/system/fullcalendar.min.js"></script>
+		<script src="/js/public/admin/system/jquery.dataTables.min.js"></script>
+		<script src="/js/public/admin/system/jquery.flot.js"></script>
+		<script src="/js/public/admin/system/jquery.flot.pie.js"></script>
+		<script src="/js/public/admin/system/jquery.flot.resize.js"></script>
+		<script src="/js/public/admin/system/jquery.flot.stack.js"></script>
+		<script src="/js/public/admin/system/jquery.noty.js"></script>
+		<script src="/js/public/admin/system/jquery.onoff.min.js"></script>
+		<script src="/js/public/admin/system/jquery.rateit.min.js"></script>
+		<script src="/js/public/admin/system/layouts/bottom.js"></script>
+		<script src="/js/public/admin/system/layouts/bottomCenter.js"></script>
+		<script src="/js/public/admin/system/layouts/bottomLeft.js"></script>
+		<script src="/js/public/admin/system/layouts/bottomRight.js"></script>
+		<script src="/js/public/admin/system/layouts/center.js"></script>
+		<script src="/js/public/admin/system/layouts/centerLeft.js"></script>
+		<script src="/js/public/admin/system/layouts/centerRight.js"></script>
+		<script src="/js/public/admin/system/layouts/inline.js"></script>
+		<script src="/js/public/admin/system/layouts/top.js"></script>
+		<script src="/js/public/admin/system/layouts/topCenter.js"></script>
+		<script src="/js/public/admin/system/layouts/topLeft.js"></script>
+		<script src="/js/public/admin/system/layouts/topRight.js"></script>
+		<script src="/js/public/admin/system/respond.min.js"></script>
+		<script src="/js/public/admin/system/themes/bootstrap.js"></script>
+		<script src="/js/public/admin/system/themes/default.js"></script>
+		<script src="/js/public/admin/system/themes/relax.js"></script>
+		<script src="/js/public/admin/userGroup/UserGroupCreateController.js"></script>
+		<script src="/js/public/admin/userGroup/UserGroupListController.js"></script>
+		<script src="/js/public/admin/userGroup/UserGroupUpdateController.js"></script>
+		<script src="/js/public/admin/userGroup/UserGroupViewController.js"></script>
+		<script src="/js/public/admin/UserGroupController.js"></script>
+		<script src="/js/public/register/RegisterController.js"></script>
+		<!--SCRIPTS END-->
+	</body>
+</html>

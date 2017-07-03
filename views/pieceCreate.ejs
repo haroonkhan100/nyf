@@ -1,0 +1,175 @@
+
+        <div class="container">
+
+
+    <form ng-submit="submitPieceCreateForm()" id="usergroup-form" class="form-camelot-admin" name="pieceCreate">
+      <h2 class="form-signin-heading">Create a new Piece (<a href="/admin/console#/piece">all</a>)</h2>
+      <div class="row">
+
+
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.mediaType.$invalid && pieceCreate.mediaType.$dirty}">
+          <label>Media Type</label>
+          <input type="text" class="form-control" placeholder="" name="mediaType" ng-model="pieceCreateForm.mediaType" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.mediaType.$dirty">
+            <span ng-show="pieceCreate.mediaType.$error.required">MediaType is required.</span>
+            <span ng-show="pieceCreate.mediaType.$error.maxlength">MediaType cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.title.$invalid && pieceCreate.title.$dirty}">
+          <label>Title</label>
+          <input type="text" class="form-control" placeholder="" name="title" ng-model="pieceCreateForm.title" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.title.$dirty">
+            <span ng-show="pieceCreate.title.$error.required">Title is required.</span>
+            <span ng-show="pieceCreate.title.$error.maxlength">Title cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.hours.$invalid && pieceCreate.hours.$dirty}">
+          <label>Hours</label>
+          <input type="text" class="form-control" placeholder="" name="hours" ng-model="pieceCreateForm.hours" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.hours.$dirty">
+            <span ng-show="pieceCreate.hours.$error.required">Hours is required.</span>
+            <span ng-show="pieceCreate.hours.$error.maxlength">hours cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.minutes.$invalid && pieceCreate.minutes.$dirty}">
+          <label>Minutes</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="minutes" ng-model="pieceCreateForm.minutes" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.minutes.$dirty">
+            <span ng-show="pieceCreate.minutes.$error.required">Minutes is required.</span>
+            <span ng-show="pieceCreate.minutes.$error.maxlength">Minutes cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.seconds.$invalid && pieceCreate.seconds.$dirty}">
+          <label>Seconds</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="seconds" ng-model="pieceCreateForm.seconds" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.seconds.$dirty">
+            <span ng-show="pieceCreate.seconds.$error.required">Seconds is required.</span>
+            <span ng-show="pieceCreate.seconds.$error.maxlength">Seconds cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.width.$invalid && pieceCreate.width.$dirty}">
+          <label>Width</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="width" ng-model="pieceCreateForm.width" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.width.$dirty">
+            <span ng-show="pieceCreate.width.$error.required">Width is required.</span>
+            <span ng-show="pieceCreate.width.$error.maxlength">Width cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.height.$invalid && pieceCreate.height.$dirty}">
+          <label>Height</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="height" ng-model="pieceCreateForm.height" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.height.$dirty">
+            <span ng-show="pieceCreate.height.$error.required">Height is required.</span>
+            <span ng-show="pieceCreate.height.$error.maxlength">Height cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.received.$invalid && pieceCreate.received.$dirty}">
+          <label>Received?</label>
+          <input type="checkbox" name="active" ng-model="pieceCreateForm.received" >
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.converted.$invalid && pieceCreate.converted.$dirty}">
+          <label>Converted?</label>
+          <input type="checkbox" name="active" ng-model="pieceCreateForm.converted" >
+        </div>
+
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.url.$invalid && pieceCreate.url.$dirty}">
+          <label>Url</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="url" ng-model="pieceCreateForm.url" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.url.$dirty">
+            <span ng-show="pieceCreate.url.$error.required">Url is required.</span>
+            <span ng-show="pieceCreate.url.$error.maxlength">Url cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.urlLogin.$invalid && pieceCreate.urlLogin.$dirty}">
+          <label>Url Login</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="urlLogin" ng-model="pieceCreateForm.urlLogin" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.urlLogin.$dirty">
+            <span ng-show="pieceCreate.urlLogin.$error.required">Url Login is required.</span>
+            <span ng-show="pieceCreate.urlLogin.$error.maxlength">Url Login cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.urlPassword.$invalid && pieceCreate.urlPassword.$dirty}">
+          <label>Url Password</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="urlPassword" ng-model="pieceCreateForm.urlPassword" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.urlPassword.$dirty">
+            <span ng-show="pieceCreate.urlPassword.$error.required">Url Password is required.</span>
+            <span ng-show="pieceCreate.urlPassword.$error.maxlength">Url Password cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.mediaPath.$invalid && pieceCreate.mediaPath.$dirty}">
+          <label>Media Path</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="mediaPath" ng-model="pieceCreateForm.mediaPath" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.mediaPath.$dirty">
+            <span ng-show="pieceCreate.mediaPath.$error.required">Medida Path is required.</span>
+            <span ng-show="pieceCreate.mediaPath.$error.maxlength">Medai Path cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.convertedPath.$invalid && pieceCreate.convertedPath.$dirty}">
+          <label>Converted Path</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="convertedPath" ng-model="pieceCreateForm.convertedPath" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.convertedPath.$dirty">
+            <span ng-show="pieceCreate.convertedPath.$error.required">Converted Path is required.</span>
+            <span ng-show="pieceCreate.convertedPath.$error.maxlength">Converted Path cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.synopsisText.$invalid && pieceCreate.synopsisText.$dirty}">
+          <label>Synopsis Text</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="synopsisText" ng-model="pieceCreateForm.synopsisText" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.synopsisText.$dirty">
+            <span ng-show="pieceCreate.synopsisText.$error.required">Synopsis Text is required.</span>
+            <span ng-show="pieceCreate.synopsisText.$error.maxlength">Synopsis Text cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.translationText.$invalid && pieceCreate.translationText.$dirty}">
+          <label>Translation Text</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="translationText" ng-model="pieceCreateForm.translationText" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.translationText.$dirty">
+            <span ng-show="pieceCreate.translationText.$error.required">Translation Text is required.</span>
+            <span ng-show="pieceCreate.translationText.$error.maxlength">Translation Text cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.notes.$invalid && pieceCreate.notes.$dirty}">
+          <label>Notes</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="notes" ng-model="pieceCreateForm.notes" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.notes.$dirty">
+            <span ng-show="pieceCreate.notes.$error.required">Notes is required.</span>
+            <span ng-show="pieceCreate.notes.$error.maxlength">Notes cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.smallThumbPath.$invalid && pieceCreate.smallThumbPath.$dirty}">
+          <label>Small Thumb Path</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="smallThumbPath" ng-model="pieceCreateForm.smallThumbPath" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.smallThumbPath.$dirty">
+            <span ng-show="pieceCreate.smallThumbPath.$error.required">Small Thumb Path is required.</span>
+            <span ng-show="pieceCreate.smallThumbPath.$error.maxlength">Small Thumb Path cannot be more than 150 characters.</span>
+          </span>
+        </div>
+                <div class="control-group form-group col-md-12" ng-class="{'has-error':pieceCreate.largeThumbPath.$invalid && pieceCreate.largeThumbPath.$dirty}">
+          <label>Large Thumb Path</label>
+          <input type="text" class="form-control" placeholder="e.g. United States" name="largeThumbPath" ng-model="pieceCreateForm.largeThumbPath" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="pieceCreate.largeThumbPath.$dirty">
+            <span ng-show="pieceCreate.largeThumbPath.$error.required">Large Thumb Path is required.</span>
+            <span ng-show="pieceCreate.largeThumbPath.$error.maxlength">Large Thumb Path cannot be more than 150 characters.</span>
+          </span>
+        </div>
+
+    
+      </div>
+
+      <br/>
+
+      <!-- Disable signup button until the form has no errors -->
+      <button class="btn btn-primary btn-lg btn-block" type="submit" ng-disabled="pieceCreate.$invalid">
+        <span ng-show="!pieceCreateForm.loading">Create Piece</span>
+        <span class="overlord-loading-spinner fa fa-spinner" ng-show="pieceCreateForm.loading" ></span>
+        <span ng-show="pieceCreateForm.loading">Preparing your new Piece...</span>
+      </button>
+
+      <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    </form>
+
+
+
+
+        </div>
+

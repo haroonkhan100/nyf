@@ -1,0 +1,44 @@
+
+
+        <div class="container">
+
+
+     <div class="form-camelot-admin">
+
+      <h2 class="form-signin-heading">UserGroups (<a href="/admin/console#/usergroup/create">New</a>)</h2>
+    <table  st-table="tableDisplayed" st-safe-src="theListLoaded" class="table table-striped">
+      <thead>
+      <tr>
+        <th colspan="6">
+          <input st-search placeholder="Search/Filter" class="input-sm form-control" type="search"/>
+        </th>
+      </tr>
+      <tr>
+        <th st-sort="titleInternal">Title (int)</th>
+        <th st-sort="titleExternal">Title (ext)</th>
+        <th st-sort="country.name">Country</th>
+        <th st-sort="active">Active</th>
+        <th st-sort="updatedAt">LastUpdated</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="row in tableDisplayed">
+        <td>{{row.titleInternal}}</td>
+        <td>{{row.titleExternal}}</td>
+        <td>{{row.country.name}}</td>
+        <td>{{row.active}}</td>
+        <td>{{row.updatedAt | date }}</td>
+        <td><a href="/admin/console#/usergroup/view/{{row.id}}">View</a></td>
+        <td><a href="/admin/console#/usergroup/edit/{{row.id}}">Edit</a></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+
+
+        </div>
+

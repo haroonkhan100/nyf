@@ -1,0 +1,62 @@
+
+        <div class="container">
+
+
+
+    <form ng-submit="submitCountryDetailsUpdateForm()" id="country-form" class="form-camelot-admin" name="countryDetails">
+      <h2 class="form-signin-heading">Update Country (<a href="/admin/console#/country">all</a>)</h2>
+      <div class="row">
+      <input type="hidden" ng-model="countryDetailsForm.id">
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':countryDetails.name.$invalid && countryDetails.name.$dirty}">
+          <label>Name</label>
+          <input type="text" class="form-control" name="name" ng-model="countryDetailsForm.name" ng-maxlength="150" >
+          <span class="help-block has-error" ng-if="countryDetails.name.$dirty">
+            <span ng-show="countryDetails.name.$error.required">Name is required.</span>
+            <span ng-show="countryDetails.name.$error.maxlength">Name cannot be more than 150 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':countryDetails.code.$invalid && countryDetails.code.$dirty}">
+          <label>Country Code</label>
+          <input type="text" class="form-control" placeholder="e.g. USA" name="code" ng-model="countryDetailsForm.code" ng-maxlength="3" >
+          <span class="help-block has-error" ng-if="countryDetails.code.$dirty">
+            <span ng-show="countryDetails.code.$error.required">Country Code is required.</span>
+            <span ng-show="countryDetails.code.$error.maxlength">Country Code cannot be more than 3 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':countryDetails.currency.$invalid && countryDetails.currency.$dirty}">
+          <label>Currency</label>
+          <input type="text" class="form-control" placeholder="e.g. USD" name="currency" ng-model="countryDetailsForm.currency" ng-maxlength="3" >
+          <span class="help-block has-error" ng-if="countryDetails.currency.$dirty">
+            <span ng-show="countryDetails.currency.$error.required">Currency is required.</span>
+            <span ng-show="countryDetails.currency.$error.maxlength">Currency cannot be more than 3 characters.</span>
+          </span>
+        </div>
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':countryDetails.active.$invalid && countryDetails.active.$dirty}">
+          <label>Active?</label>
+          <input type="checkbox" name="active" ng-model="countryDetailsForm.active" >
+        </div>
+
+
+       
+      </div>
+
+      <br/>
+
+      <!-- Disable signup button until the form has no errors -->
+      <button class="btn btn-primary btn-lg btn-block col-md-12" type="submit" ng-disabled="countryDetails.$invalid">
+        <span ng-show="!countryDetailsForm.loading">Update Country</span>
+        <span class="overlord-loading-spinner fa fa-spinner" ng-show="countryDetailsForm.loading" ></span>
+        <span ng-show="countryDetailsForm.loading">Updating country...</span>
+      </button>
+      <button class="btn btn-danger btn-lg btn-block col-md-12" type="button" ng-click="deleteCountry()" ng-disabled="countryDetails.$invalid" >
+        <span ng-show="!countryDetailsForm.deleting">Delete Country</span>
+        <span class="overlord-loading-spinner fa fa-spinner" ng-show="countryDetailsForm.deleting" ></span>
+        <span ng-show="countryDetailsForm.deleting">Deleting country...</span>
+      </button>
+
+      <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    </form>
+
+
+
+        </div>
